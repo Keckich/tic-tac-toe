@@ -12,7 +12,7 @@ export default function Player(props) {
   }
 
   return (
-    <li>
+    <li className={props.isActive && 'active'}>
       <span className="player">
         {isEditing ? (
           <input type="text" required value={playerName} onChange={handleChange} />
