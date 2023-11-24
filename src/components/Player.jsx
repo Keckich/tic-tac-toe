@@ -2,8 +2,13 @@ import { useState } from "react";
 
 export default function Player(props) {
   const [isEditing, setIsEditing] = useState();
+
   const handleEditing = () => {
     setIsEditing((editing) => !editing);
+
+    if (isEditing) {
+      props.onChangeName(props.symbol, playerName);
+    }
   };
 
   const [playerName, setPlayerName] = useState(props.name);
@@ -12,7 +17,7 @@ export default function Player(props) {
   }
 
   return (
-    <li className={props.isActive && 'active'}>
+    <li className={props.isActive && "active"}>
       <span className="player">
         {isEditing ? (
           <input type="text" required value={playerName} onChange={handleChange} />
